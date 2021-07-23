@@ -6,7 +6,9 @@ export const NotFound: React.VFC = () => {
   return (
     <div>
       <p>404 ページが見つかりません</p>
-      <Button onClick={() => history.push('/')}>homeへ</Button>
+      <Button colorScheme='facebook' onClick={() => history.push('/')}>
+        homeへ
+      </Button>
     </div>
   )
 }
