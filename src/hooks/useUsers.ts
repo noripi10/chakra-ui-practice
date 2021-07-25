@@ -26,5 +26,18 @@ export const useUsers = () => {
     }
   }, [])
 
-  return { loading, users, getAllUsers }
+  const updateUser = useCallback(
+    (editUser: UserProp) => {
+      const newUsers = users.map((user) => {
+        if (user.id === editUser.id) {
+          return editUser
+        }
+        return user
+      })
+      setUsers(newUsers)
+    },
+    [users]
+  )
+
+  return { loading, users, getAllUsers, updateUser }
 }

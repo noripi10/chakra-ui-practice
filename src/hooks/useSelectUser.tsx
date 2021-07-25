@@ -13,7 +13,6 @@ export const useSelectUser = () => {
 
   const onSelectUser = useCallback(({ id, users, onOpen }: Props) => {
     const target = users.find((user) => user.id === id)
-
     setSelectedUser(target || null)
     onOpen()
   }, [])

@@ -7,13 +7,20 @@ export const Login: React.VFC = memo(() => {
   const { login, loading } = useAuth()
   const [userId, setUserId] = useState<string>('')
 
+  const onLogin = useCallback(async () => {
+    await login(userId)
+  }, [userId, login])
+
   const onChangeUserId = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     setUserId(e.target.value)
   }, [])
 
-  const onLogin = async () => {
-    await login(userId)
-  }
+  // const onKeyDownUserId = useCallback(() => {
+  //   if (userId) {
+  //     onLogin()
+  //   }
+  // }, [userId, onLogin])
+
   return (
     <Flex justify='center' align='center' height='100vh'>
       <Box bg='white' w='sm' p={4} borderRadius='md' shadow='md'>

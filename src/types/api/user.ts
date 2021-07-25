@@ -4,6 +4,9 @@ export type UserProp = {
   username: string
   email: string
   address: AddressProp
+  phone: string
+  website: string
+  company: CompanyProp
 }
 
 type AddressProp = {
@@ -17,4 +20,10 @@ type AddressProp = {
 type GeoProp = {
   lat: string
   lng: string
+}
+
+type CompanyProp = {
+  name: string
+  catchPhrase: string
+  bs: string
 }

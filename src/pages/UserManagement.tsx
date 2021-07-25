@@ -9,12 +9,15 @@ import { useSelectUser } from '../hooks/useSelectUser'
 
 export const UserManagement: VFC = memo(() => {
   const { isOpen, onOpen, onClose } = useDisclosure()
-  const { loading, users, getAllUsers } = useUsers()
+  const { loading, users, getAllUsers, updateUser } = useUsers()
   const { selectedUser, onSelectUser } = useSelectUser()
 
-  const onClickUser = useCallback((id: number) => {
-    onSelectUser({ id, users, onOpen })
-  }, [])
+  const onClickUser = useCallback(
+    (id: number) => {
+      onSelectUser({ id, users, onOpen })
+    },
+    [users, onSelectUser, onOpen]
+  )
 
   useEffect(() => {
     getAllUsers()
@@ -44,7 +47,7 @@ export const UserManagement: VFC = memo(() => {
             </WrapItem>
           ))}
       </Wrap>
-      <UserDetailModal isOpen={isOpen} onClose={onClose} selectedUser={selectedUser} />
+      <UserDetailModal isOpen={isOpen} onClose={onClose} selectedUser={selectedUser} updateUser={updateUser} />
     </>
   )
 })
